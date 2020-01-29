@@ -96,6 +96,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                   ],
                 ),
                 onPressed: (){
+                  Navigator.pushNamed(context, '/widgetCamera');
                 },
               ),
               SizedBox(

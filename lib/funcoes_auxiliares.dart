@@ -4,14 +4,12 @@ import 'package:file_picker/file_picker.dart';
 import 'dart:math';
 import 'dart:io';
 
-import 'package:flutter/material.dart';
-
 class FuncoesAuxiliares {
   String _path;
   List<CameraDescription> cameras = [];
   CameraController controller;
   String imagePath;
-
+  Future<void> initializeControllerFuture;
 
   void openFileExplorerFirebase() async {
     try {
@@ -32,13 +30,16 @@ class FuncoesAuxiliares {
     print('URL Is $url');
   }
 
-  Future<void> tirarFoto() async {
-    try{
+  void getCamera() async {
+    try {
       cameras = await availableCameras();
       final firstCamera = cameras.first;
-      
-
-    }on CameraException catch(e){
+      controller = CameraController(
+        firstCamera,
+        ResolutionPreset.high,
+      );
+      initializeControllerFuture = controller.initialize();
+    } on CameraException catch (e) {
       print(e.toString());
     }
   }
