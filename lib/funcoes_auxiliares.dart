@@ -6,10 +6,8 @@ import 'dart:io';
 
 class FuncoesAuxiliares {
   String _path;
-  List<CameraDescription> cameras = [];
-  CameraController controller;
   String imagePath;
-  Future<void> initializeControllerFuture;
+  
 
   void openFileExplorerFirebase() async {
     try {
@@ -30,7 +28,7 @@ class FuncoesAuxiliares {
     print('URL Is $url');
   }
 
-  void getCamera() async {
+  /*void getCamera() async {
     try {
       cameras = await availableCameras();
       final firstCamera = cameras.first;
@@ -38,9 +36,11 @@ class FuncoesAuxiliares {
         firstCamera,
         ResolutionPreset.high,
       );
-      initializeControllerFuture = controller.initialize();
+      controller.initialize().then((_){
+        
+      });
     } on CameraException catch (e) {
       print(e.toString());
     }
-  }
+  }*/
 }
