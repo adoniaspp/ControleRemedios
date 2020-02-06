@@ -1,8 +1,10 @@
+import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 import 'funcoes_auxiliares.dart';
 import 'dart:async';
 
 class HomeWidget extends StatefulWidget {
+
   @override
   _HomeWidgetState createState() => _HomeWidgetState();
 }
@@ -13,6 +15,7 @@ class _HomeWidgetState extends State<HomeWidget> {
   final nomeRemedio = TextEditingController();
   int hora;
   int minuto;
+
 
   @override
   void dispose() {

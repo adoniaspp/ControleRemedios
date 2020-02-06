@@ -24,9 +24,12 @@ class _WidgetCameraState extends State<WidgetCamera> {
         firstCamera,
         ResolutionPreset.high,
       );
-      setState(() {
-        initializeControllerFuture = controller.initialize();        
-      });
+      
+      controller.initialize().then((_){
+        setState(() {
+        });
+      });        
+      
     } on CameraException catch (e) {
       print(e.toString());
     }
