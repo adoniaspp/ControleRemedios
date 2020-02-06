@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 List<CameraDescription> cameras;
 
 Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
   cameras = await availableCameras();
   runApp(Home());
 } 
@@ -17,7 +18,7 @@ class Home extends StatelessWidget {
       initialRoute: '/',
       routes: {
         '/': (context) => HomeWidget(),
-        '/widgetCamera': (context) => WidgetCamera(),
+        '/widgetCamera': (context) => WidgetCamera(cameras: cameras,),
       },
       theme: ThemeData(
         primaryColor: Colors.blue,

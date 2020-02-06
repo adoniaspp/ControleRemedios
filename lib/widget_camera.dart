@@ -3,12 +3,17 @@ import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 
 class WidgetCamera extends StatefulWidget {
+
+  final List<CameraDescription> cameras;
+
+  WidgetCamera({Key key, @required this.cameras}): super(key : key);
+
   @override
   _WidgetCameraState createState() => _WidgetCameraState();
+
 }
 
 class _WidgetCameraState extends State<WidgetCamera> {
-  List<CameraDescription> cameras = [];
   CameraController controller;
   Future<void> initializeControllerFuture;
 
@@ -17,9 +22,7 @@ class _WidgetCameraState extends State<WidgetCamera> {
       super.initState();
       //FuncoesAuxiliares().getCamera();
       try {
-      //obter as cameras disponíveis no main e passar como parâmetro para esse widget.
-      //cameras = await availableCameras();
-      final firstCamera = cameras.first;
+      final firstCamera = widget.cameras.first;
       controller = CameraController(
         firstCamera,
         ResolutionPreset.high,
@@ -38,16 +41,9 @@ class _WidgetCameraState extends State<WidgetCamera> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-          body: FutureBuilder(
-        future: initializeControllerFuture,
-        builder: (context, snapshot){
-          if(snapshot.connectionState == ConnectionState.done){
-            return CameraPreview(controller);
-          }else{
-            Center(child: CircularProgressIndicator(),);
-          }
-        },
-      ),
-    );
+          body: !controller.value.isInitialized ?
+            Center(child: CircularProgressIndicator(),) :
+            CameraPreview(controller)
+      );
   }
 }
