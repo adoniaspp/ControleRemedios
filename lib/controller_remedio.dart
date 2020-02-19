@@ -1,7 +1,7 @@
 import 'package:mobx/mobx.dart';
 
 import 'model_remedio.dart';
-part 'controller.g.dart';
+part 'controller_remedio.g.dart';
 
 class ControllerRemedio = ControllerRemedioBase with _$ControllerRemedio;
 
