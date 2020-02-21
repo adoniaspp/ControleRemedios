@@ -11,7 +11,7 @@ abstract class ControllerRemedioBase with Store{
   Remedio remedio;
 
   @action
-  void cadastrar(){
+  void cadastrar(String descricao, int hora, int minuto){
     //chama o service
   }
 

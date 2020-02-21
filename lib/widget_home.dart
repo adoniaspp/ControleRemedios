@@ -2,6 +2,7 @@ import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 import 'funcoes_auxiliares.dart';
 import 'dart:async';
+import 'controller_remedio.dart';
 
 class HomeWidget extends StatefulWidget {
 
@@ -40,6 +41,7 @@ class _HomeWidgetState extends State<HomeWidget> {
 
   @override
   Widget build(BuildContext context) {
+    ControllerRemedio controllerRemedio = ControllerRemedio();
     return Scaffold(
       appBar: AppBar(
         title: Text("Cadastro de Remédio"),
@@ -108,7 +110,7 @@ class _HomeWidgetState extends State<HomeWidget> {
               RaisedButton(
                 child: Text("Cadastrar"),
                 onPressed: (){
-
+                  controllerRemedio.cadastrar(nomeRemedio.text, hora, minuto);
                 },
               )
             ],

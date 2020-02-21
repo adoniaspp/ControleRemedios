@@ -30,10 +30,10 @@ mixin _$ControllerRemedio on ControllerRemedioBase, Store {
       ActionController(name: 'ControllerRemedioBase');
 
   @override
-  void cadastrar() {
+  void cadastrar(String descricao, int hora, int minuto) {
     final _$actionInfo = _$ControllerRemedioBaseActionController.startAction();
     try {
-      return super.cadastrar();
+      return super.cadastrar(descricao, hora, minuto);
     } finally {
       _$ControllerRemedioBaseActionController.endAction(_$actionInfo);
     }
